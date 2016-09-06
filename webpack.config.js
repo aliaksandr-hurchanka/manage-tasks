@@ -27,15 +27,20 @@ module.exports = {
         new NpmInstallPlugin()
     ],
     module: {
-       loaders: [
-          {
-             loaders: ['react-hot', 'babel-loader'],
-             include: [
-               path.resolve(__dirname, "src")
-             ],
-             test: /\.js$/,
-             plugins: ['transform-runtime']
-          }
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: ['babel-loader']
+            },
+            {
+                test: /\.jsx$/,
+                loaders: ['babel-loader']
+            },
+            {
+                test: /\.html$/,
+                loader: "file?name=[name].[ext]"
+            }
         ]
     }
 }

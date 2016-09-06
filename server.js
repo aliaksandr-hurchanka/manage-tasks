@@ -1,11 +1,17 @@
 var webpack = require('webpack');
-var config = require('./webpack.config');
+var webpackDevMiddleware = require('webpack-dev-middleware')
+var webpackHotMiddleware = require('webpack-hot-middleware')
+var config = require('./webpack.config')
 
 var app = new (require('express'))();
 var port = 3000;
 
-app.get("/manage-tasks-ui/", function(req, res) {
-  res.sendFile(__dirname + '/index.html')
+var compiler = webpack(config)
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+app.use(webpackHotMiddleware(compiler))
+
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + '/manage-tasks-ui/index.html')
 })
 
 app.listen(port, function(error) {
