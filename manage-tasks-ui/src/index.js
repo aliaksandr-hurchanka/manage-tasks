@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import App from './components/App';
 import { createStore } from 'redux';
 import reducer from './reducers';
+import { Route, Router, createBrowserHistory } from 'react-router';
+import HomePage from './pages/home-page/';
+
+let bh = createBrowserHistory({queryKey: false})
 
 ReactDOM.render(
-    <App />,
+    <Router history={ bh }>
+        <Route path='/' component={HomePage} />
+    </Router>,
     document.getElementById('root')
 )
