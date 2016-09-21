@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import reducer from './reducers';
-import { Route, Router, createBrowserHistory } from 'react-router';
+import { Route, Router, browserHistory, IndexRoute, Link } from 'react-router';
 import HomePage from './pages/home-page/';
+import DashboardPage from './pages/dashboard-page/';
+import NotFoundPage from './pages/not-found-page';
 
-let bh = createBrowserHistory({queryKey: false})
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <ul>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+        </ul>
+        {this.props.children}
+      </div>
+    )
+  }
+}
 
 ReactDOM.render(
-    <Router history={ bh }>
-        <Route path='/' component={HomePage} />
+    <Router history={ browserHistory }>
+        <Route path='/' component={App}>
+            <Route path='/dashboard' component={DashboardPage} />
+        </Route>
+        <Route path="*" component={NotFoundPage} />
     </Router>,
     document.getElementById('root')
 )
