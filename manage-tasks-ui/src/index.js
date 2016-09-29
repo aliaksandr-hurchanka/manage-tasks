@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <div>
         <ul>
+          <li><Link to="/">HomePage</Link></li>
           <li><Link to="/dashboard">Dashboard</Link></li>
         </ul>
         {this.props.children}
@@ -18,12 +19,13 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(
+ReactDOM.render((
     <Router history={ browserHistory }>
         <Route path='/' component={App}>
-            <Route path='/dashboard' component={DashboardPage} />
+            <IndexRoute component={HomePage} />
+            <Route path='dashboard' component={DashboardPage} />
         </Route>
         <Route path="*" component={NotFoundPage} />
-    </Router>,
+    </Router>),
     document.getElementById('root')
 )

@@ -26,6 +26,11 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new NpmInstallPlugin()
     ],
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true
+    },
     module: {
         loaders: [
             {
