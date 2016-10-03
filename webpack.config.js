@@ -15,7 +15,7 @@ module.exports = {
             'webpack-hot-middleware/client',
             'babel-polyfill'
         ],
-        application: path.resolve(__dirname, 'manage-tasks-ui/src/index')
+        application: path.resolve(__dirname, 'manage-tasks-ui/js/index')
     },
     output: {
         path: path.resolve(__dirname, 'build'),
