@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router';
-import {Grid} from 'react-bootstrap';
+import MainMenu from 'app/components/main-menu';
 
 export const App = (props) => (
-    <div>
-        <Grid>
-            <ul>
-                <li><Link to="/">HomePage</Link></li>
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><Link to="/about">About</Link></li>
-            </ul>
-            {props.children}
-        </Grid>
+    <div className="container-fluid">
+        <MainMenu />
+        <div className="row">
+            <div className="col-md-2">
+                {'#Left menu'}
+            </div>
+            <div className="col-md-10">
+                {props.children}
+            </div>
+        </div>
     </div>
 );

@@ -21,6 +21,13 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
         filename: '[name].bundle.js'
     },
+    resolve: {
+        extensions: ['', '.js', '.less'],
+        root: __dirname,
+        alias: {
+            app: path.join(__dirname, 'manage-tasks-ui/js/app')
+        }
+    },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
