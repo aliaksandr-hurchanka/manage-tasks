@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Article from 'app/components/article';
 
 export default class AboutPage extends Component {
     constructor() {
@@ -7,6 +8,7 @@ export default class AboutPage extends Component {
     render() {
         return (
             <h3>About page!</h3>
+            <Article />
         );
     }
 }
