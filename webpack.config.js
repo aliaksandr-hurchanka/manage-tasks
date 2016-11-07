@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 var NpmInstallPlugin = require('npm-install-webpack-plugin')
-const pathWebApp = path.join(__dirname, 'manage-tasks-ui/');
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -16,13 +15,11 @@ module.exports = {
             'webpack-hot-middleware/client',
             'babel-polyfill'
         ],
-        application: path.resolve(__dirname, 'manage-tasks-ui/js/index'),
-        styles: path.join(pathWebApp, 'styles/index.less')
+        application: path.resolve(__dirname, 'manage-tasks-ui/js/index')
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].bundle.js',
-        publicPath: '/manage-tasks-ui/build/'
+        filename: '[name].bundle.js'
     },
     resolve: {
         extensions: ['', '.js', '.less'],
@@ -55,10 +52,6 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: "file?name=[name].[ext]"
-            },
-            {
-                test: /\.(css|less)$/,
-                loader: ExtractTextPlugin.extract("css-loader", "less-loader")
             }
         ]
     }
